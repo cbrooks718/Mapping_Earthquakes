@@ -97,6 +97,8 @@ L.geoJSON(data, {
             layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
         }
     }).addTo(earthquakes);
+    // Then we add the earthquake layer to our map.
+    earthquakes.addTo(map);
 
     // Create a legend control object.
     let legend = L.control({
@@ -118,12 +120,11 @@ L.geoJSON(data, {
         for (var i = 0; i < magnitudes.length; i++) {
             console.log(colors[i]);
             div.innerHTML +=
-            "<i style='background: " + colors[i] + "'></i> " + magnitudes[i] + (magnitudes[i + 1] ? "&ndash;" + magnitudes[i + 1] + "<br>" : "+");
+            "<i style='background: " + colors[i] + "'></i> " +
+             magnitudes[i] + (magnitudes[i + 1] ? "&ndash;" + magnitudes[i + 1] + "<br>" : "+");
         }
         return div;
             };
 
     legend.addTo(map);
-    // Then we add the earthquake layer to our map.
-    earthquakes.addTo(map);
 });
